@@ -5,7 +5,8 @@
 
 namespace cleaning
 {
-
+	
+	////  to clean screan
 	void status_clean(int control_clean)
 	{
 		if (control_clean)
@@ -15,9 +16,10 @@ namespace cleaning
 
 		cleaning::save_clean();
 	}
-
 	void save_clean()
 	{
+		//cleaning::clean_iostream();
+
 		std::fstream file;
 		file.open("..\\..\\andariel\\saved_clean.txt", std::ios::out);
 
@@ -41,17 +43,16 @@ namespace cleaning
 
 		file.close();
 	}
-
 	int reloading_clean()
 	{
 		std::fstream file;
-		bool control_clean;
+		int control_clean{ 1 };
 		file.open("..\\..\\andariel\\saved_clean.txt", std::ios::in);
 
-		if (!file.good())
-			std::cout << "wrong file \n";
-		else
-		{
+		//if (!file.good())
+			//std::cout << "wrong file \n";
+		//else
+		//{
 			std::string line;
 			short nr_line{ 1 };
 
@@ -64,9 +65,22 @@ namespace cleaning
 				}
 				nr_line++;
 			}
-		}
+		//}
 		file.close();
 
 		return control_clean;
+	}
+
+	void clean_screen(int control_screen)
+	{
+		if (control_screen)
+			system("clear");
+	}
+
+	//// to clean iostream
+	void clean_iostream()
+	{
+		std::cin.clear(); // czyszczenie flag bledow w strumieniu 
+		std::cin.ignore(); // odrzucenie danych ktore wywolaly bledy 
 	}
 }
