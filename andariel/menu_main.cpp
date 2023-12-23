@@ -1,10 +1,13 @@
 #include <iostream>
 #include "settings.h"
+#include "cleaning.h"
 
 namespace fun3at
 {
 	void menu_main()
 	{
+
+
 		bool control_back{ false };
 		do
 		{
@@ -18,11 +21,15 @@ namespace fun3at
 
 			if (choice == '1')
 			{
+				cleaning::clean_screen(cleaning::reloading_clean());
 				std::cout << "plays \n";
 				control_back = true;
 			}
 			else if (choice == '2')
+			{
+				cleaning::clean_screen(cleaning::reloading_clean());
 				settings::settings_main();
+			}
 			else if (choice == '3')
 				exit(0);
 			else if (choice != 1 && choice != 2)
